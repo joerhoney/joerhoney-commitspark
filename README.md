@@ -14,8 +14,8 @@ and can then use all of the provider's collaboration features (e.g. commenting, 
 
 ## Supported Git providers
 
-* GitHub
-* User-defined custom Git provider
+- GitHub
+- User-defined custom Git provider
 
 Official support for GitLab is planned for a future release.
 
@@ -30,9 +30,9 @@ designated data repository.
 The following settings are relevant, all other settings can be left to their defaults:
 
 | Setting                          | Description                                                                                                                                                                            | Value                                                                                                                                |
-|----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
-| Homepage URL                     | Enter the base URL that the frontend will be reachable under                                                                                                                           | e.g. `http://localhost:3000/` or `https://cs.exmaple.com/`                                                                           |
-| Callback URL                     | Enter the URL that GitHub should redirect to upon successful user authentication.<br/><br/>The built-in route that accepts these callbacks is `/api/oauth/authenticate-with-provider/` | e.g. `http://localhost:3000/api/oauth/authenticate-with-provider/` or `https://cs.example.com/api/oauth/authenticate-with-provider/` |
+| -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| Homepage URL                     | Enter the base URL that the frontend will be reachable under                                                                                                                           | e.g. `http://localhost:7777/` or `https://cs.exmaple.com/`                                                                           |
+| Callback URL                     | Enter the URL that GitHub should redirect to upon successful user authentication.<br/><br/>The built-in route that accepts these callbacks is `/api/oauth/authenticate-with-provider/` | e.g. `http://localhost:7777/api/oauth/authenticate-with-provider/` or `https://cs.example.com/api/oauth/authenticate-with-provider/` |
 | Expire user authorization tokens | Turn this off as token expiry is currently not supported                                                                                                                               | Off                                                                                                                                  |
 | Webhook                          | Notification about GitHub platform events related to the App is not relevant and must be turned off                                                                                    | Off                                                                                                                                  |
 | Permissions                      | Determines App access                                                                                                                                                                  | **Repository permissions**<br/>Contents: `Read and write`<br/>Metadata: `Read-only`                                                  |
@@ -43,15 +43,15 @@ for details.
 
 Once the App is created:
 
-* On the App's settings page, note the `Client ID` under `General -> About`, e.g.  `Iv1.abcef12345678901`
-* Generate a client secret with `Generate a new client secret` and copy the 40 character long hex key shown on screen
-* Install the App into your GitHub account or organization under `Install App -> Install` and select one or more
+- On the App's settings page, note the `Client ID` under `General -> About`, e.g. `Iv1.abcef12345678901`
+- Generate a client secret with `Generate a new client secret` and copy the 40 character long hex key shown on screen
+- Install the App into your GitHub account or organization under `Install App -> Install` and select one or more
   of your designated data repositories that should be available to data editors
 
 Environment variables needed by the GitHub integration:
 
 | Variable                     | Description                                                                                                        |
-|------------------------------|--------------------------------------------------------------------------------------------------------------------|
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------ |
 | `GITHUB_OAUTH_CLIENT_ID`     | Client ID of GitHub App to be used for user authentication (see above),<br/>e.g. `Iv1.abcef12345678901`            |
 | `GITHUB_OAUTH_CLIENT_SECRET` | 40 character long hexadecimal client secret of the GitHub App,<br/>e.g. `0123456789abcdef01234567890abcdef0123456` |
 
@@ -71,8 +71,8 @@ and further parametrized through environment variables or `.env` file.
 The following environment variables must be set independent of configuration:
 
 | Variable      | Description                                                                                                                     |
-|---------------|---------------------------------------------------------------------------------------------------------------------------------|
-| `HOSTING_URL` | Set to a public URL where this frontend is going to be reachable,<br/>e.g. `http://localhost:3000` or `https://cms.example.com` |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `HOSTING_URL` | Set to a public URL where this frontend is going to be reachable,<br/>e.g. `http://localhost:7777` or `https://cms.example.com` |
 
 ### Running from source
 
@@ -86,7 +86,7 @@ npm install
 npm run dev
 ```
 
-Then open `http://localhost:3000` in your browser.
+Then open `http://localhost:7777` in your browser.
 
 ### Running from Docker
 
@@ -100,10 +100,10 @@ ghcr.io/commitspark/frontend:latest
 Run the image locally as follows:
 
 ```shell
-docker run -e "GITHUB_OAUTH_CLIENT_ID=..." -e "GITHUB_OAUTH_CLIENT_SECRET=..." -e "HOSTING_URL=http://localhost:3000" -p 127.0.0.1:3000:3000 --name commitspark-frontend ghcr.io/commitspark/frontend:latest
+docker run -e "GITHUB_OAUTH_CLIENT_ID=..." -e "GITHUB_OAUTH_CLIENT_SECRET=..." -e "HOSTING_URL=http://localhost:7777" -p 127.0.0.1:3000:3000 --name commitspark-frontend ghcr.io/commitspark/frontend:latest
 ```
 
-Then open `http://localhost:3000` in your browser.
+Then open `http://localhost:7777` in your browser.
 
 ## Getting started with data editing
 
