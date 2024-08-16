@@ -1,0 +1,65 @@
+directive @Entry on OBJECT
+
+directive @Ui(visibleList: Boolean, editor: String) on FIELD_DEFINITION
+
+type Page @Entry {
+  id: ID!
+  internalName: String! @Ui(visibleList: true)
+  title: LocalizedString!
+  contentElements: [ContentElement!]!
+  slug: LocalizedString!
+  seo: SEO
+}
+
+union ContentElement = Hero | Text
+
+type Hero {
+  heading: LocalizedString!
+  image: ImageReference
+  imagePosition: ImagePosition
+}
+
+type ImageReference {
+  imageId: String!
+  width: Int!
+  height: Int!
+  altText: LocalizedString!
+}
+
+enum ImagePosition {
+  aboveHeading
+  belowHeading
+}
+
+type Header @Entry {
+  id: ID!
+  headerMenuEntries: [HeaderMenuEntry!]!
+}
+
+type HeaderMenuEntry {
+  label: LocalizedString!
+  linkTo: Page!
+}
+
+type Text {
+  body: LocalizedMarkdownString!
+}
+
+type SEO {
+  metaTags: [MetaTag!]!
+}
+
+type MetaTag {
+  name: String!
+  value: String!
+}
+
+type LocalizedString {
+  en: String!
+  de: String!
+}
+
+type LocalizedMarkdownString {
+  en: String! @Ui(editor: "markdown")
+  de: String! @Ui(editor: "markdown")
+}
